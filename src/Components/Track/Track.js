@@ -1,5 +1,7 @@
 import React from 'react';
 
+import "./Track.css";
+
 
 const Track = (props) => {
     const addTrack = useCallback(
@@ -25,7 +27,7 @@ const Track = (props) => {
             );
         }
         return (
-            <button className='Track-action' onClick={AddTrack}>
+            <button className='Track-action' onClick={addTrack}>
                 +
             </button>
         );
