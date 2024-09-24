@@ -44,7 +44,7 @@ const Track = (props) => {
             {renderAction()}
         </div>
     );
-}
+};
 
 
 export default Track;

@@ -2,6 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import { useCallback, useState } from 'react';
 
+import Playlist from '../Playlist/Playlist';
+import SearchBar from '../SearchBar/SearchBar';
+import SearchResults from '../SearchResults/SearchResults';
+import Spotify from '../../util/Spotify';
+
 const App = () => {
   const [searchResults, useSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState("NewPlaylist");
