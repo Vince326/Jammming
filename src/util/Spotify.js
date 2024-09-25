@@ -60,6 +60,17 @@ const Spotify = {
                 headers: headers,
                 method: 'POST',
                 body: JSON.stringify({ name: name })
-            }).then(response => response.json())
-        })
+            }).then(response => response.json()
+            ).then(jsonResponse => {
+                const playlistId = jsonResponse.id;
+                return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+                    headers: headers,
+                    method: `POST`,
+                    body: JSON.stringify({ uris: trackUris })
+                });
+            });
+        });
     }
+};
+
+export default Spotify;
