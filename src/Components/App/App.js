@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { useCallback, useState } from 'react';
 
@@ -8,7 +8,7 @@ import SearchResults from '../SearchResults/SearchResults';
 import Spotify from '../../util/Spotify';
 
 const App = () => {
-  const [searchResults, useSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState("NewPlaylist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
@@ -28,7 +28,7 @@ const App = () => {
   );
 
   const removeTrack = useCallback((track) => {
-    setPlaylistTrcks((prevTracks) =>
+    setPlaylistTracks((prevTracks) =>
       prevTracks.filter((currentTrack) => currentTrack.id !== track.id)
     );
   }, []);
@@ -38,21 +38,23 @@ const App = () => {
   })
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>
+        Ja<span className='highlight'>mmm</span>ing
+      </h1>
+      <div className='App'>
+        <SearchBar onSearch={search} />
+        <div className='App-playlist'>
+          <SearchResults searchResults={searchResults} onAdd={addTrack} />
+          <Playlist
+            playlistName={playlistName}
+            playlistTracks={playlistTracks}
+            onNameChange={updatePlaylist}
+            onRemove={removeTrack}
+            onSave={savePlaylist}
+          />
+        </div>
+      </div>
     </div>
   );
 }
